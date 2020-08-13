@@ -5,6 +5,9 @@
  */
 
 module.exports = {
-  /* Your site config here */
-  plugins: [],
-}
+  siteMetadata: {
+    title: 'Timo Turkki',
+    description: 'Timo Turkki - Personal website',
+  },
+  plugins: [`gatsby-plugin-styled-components`],
+};
