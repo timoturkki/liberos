@@ -8,6 +8,29 @@ module.exports = {
   siteMetadata: {
     title: 'Timo Turkki',
     description: 'Timo Turkki - Personal website',
+    blogs: [
+      {
+        title: 'Blog title 1',
+        text:
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus doloremque doloribus omnis modi. Minus id non fuga voluptates, ducimus blanditiis cupiditate repellat voluptatum quas libero explicabo dolores iusto, deleniti odit?',
+      },
+      {
+        title: 'Blog title 2',
+        text:
+          'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus doloremque doloribus omnis modi. Minus id non fuga voluptates.',
+      },
+    ],
   },
-  plugins: [`gatsby-plugin-styled-components`],
+  plugins: [
+    `gatsby-plugin-styled-components`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/images/`,
+      },
+    },
+  ],
 };
