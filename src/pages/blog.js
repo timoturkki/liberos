@@ -8,22 +8,19 @@ const blog = ({ data }) => {
   const {
     allContentfulBlog: { nodes: blogs },
   } = data;
-
+  console.log(blogs);
   return (
     <Layout>
       <h1>This is our blog page</h1>
 
-      {blogs.map(({ title, publishedData, body, id, seoUrl }) => (
+      {blogs.map(({ title, publishedData, body, id, slug }) => (
         <div key={id}>
           <h2>{title}</h2>
           <p>{publishedData}</p>
-          <p>
-            {body &&
-              body.content &&
-              body.content.length &&
-              body.content[0].content[0].value}
-          </p>
-          <Link to={`/blog/${seoUrl}`}>Read more</Link>
+          {body.content.map(({ content }, i) => (
+            <p key={`${id}-${i}`}>{content[0].value}</p>
+          ))}
+          <Link to={`/blog/${slug}`}>Read more</Link>
           <hr />
         </div>
       ))}
@@ -38,7 +35,7 @@ export const query = graphql`
         title
         publishDate
         id
-        seoUrl
+        slug
         body {
           content {
             content {
